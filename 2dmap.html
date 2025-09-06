@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ArcGIS Map</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.32/"></script>
+    <script>
+        require(["esri/Map", "esri/views/MapView"], function (Map, MapView) {
+            const map = new Map({
+                basemap: "topo-vector"
+            });
+
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [-118.805, 34.027], // Longitude, latitude
+                zoom: 20
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv" style="height: 100vh; width: 100%;"></div>
+</body>
+
+</html>

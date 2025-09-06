@@ -1,0 +1,167 @@
+/* --- ESTILOS GERAIS --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+}
+
+/* --- ESTILO DO MAPA (fundo da tela) --- */
+#viewdiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Garante que o mapa fique no fundo */
+}
+
+/* --- ESTILO DO CARD PRINCIPAL --- */
+.container {
+    /* Posicionamento e Centralização */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Técnica para centralização perfeita */
+    z-index: 10; /* Coloca o card na frente do mapa */
+
+    /* Tamanho e Responsividade */
+    width: 90%; /* Ocupa 90% da largura da tela */
+    max-width: 480px; /* Largura máxima reduzida (era 600px) */
+    
+    /* Estilos Visuais do Card */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+    text-align: center;
+    
+    /* Para telas muito pequenas, permite rolagem interna */
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+/* --- ESTILOS DOS ELEMENTOS DENTRO DO CARD --- */
+header h1 {
+    font-size: 1.8rem; /* Título um pouco menor */
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+header p {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+}
+
+#dataForm {
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os itens do formulário */
+}
+
+.input-field label {
+    font-weight: 700;
+    color: #555;
+    font-size: 1rem;
+}
+
+.input-field input[type="date"] {
+    width: 100%; /* Ocupa toda a largura disponível no card */
+    max-width: 220px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#infoDiv p {
+    margin: 5px 0;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+#buscarPrevisaoBtn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+#buscarPrevisaoBtn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* --- Card de Resultado --- */
+.card {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 10px 0 0 0;
+    margin-top: 0;
+    text-align: left;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    display: none;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #3498db;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.card ul { list-style: none; padding: 0; }
+.card ul li {
+    font-size: 1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+}
+.card ul li:last-child { border-bottom: none; }
+
+/* Spinner de carregamento e mensagens de erro */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+.error-message { color: #e74c3c; font-weight: bold; text-align: center; }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
